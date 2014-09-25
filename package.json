@@ -1,0 +1,40 @@
+{
+  "name": "relocate",
+  "version": "1.0.0",
+  "description": "relocate js files, update requires accordingly",
+  "main": "index.js",
+  "bin": {
+    "relocate": "cli.js"
+  },
+  "dependencies": {
+    "cssauron-falafel": "^1.2.1",
+    "falafel": "^0.3.1",
+    "minimist": "^1.1.0",
+    "ls-stream": "^1.0.0",
+    "mkdirp": "^0.5.0",
+    "rimraf": "^2.2.8",
+    "through": "^2.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hayes/relocate.git"
+  },
+  "keywords": [
+    "move",
+    "js",
+    "mvjs",
+    "jsmv",
+    "transform",
+    "javascript"
+  ],
+  "author": "Michael Hayes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hayes/relocate/issues"
+  },
+  "homepage": "https://github.com/hayes/relocate"
+}
