@@ -6,10 +6,10 @@ or
 `relocate test.js test/unit.js --remove`
 
 ### flags
-`--remove` or `-r` remove original files after moving
-`--ignore` or `-i` ignore file/dir defaults to ignoreing `.git` and `node_modules`
-`--transform` or `-t` path to transfrom module.
-`--force` or `-f` overwrite existing files
+* `--remove` or `-r` remove original files after moving
+* `--ignore` or `-i` ignore file/dir defaults to ignoreing `.git` and `node_modules`
+* `--transform` or `-t` path to transfrom module.
+* `--force` or `-f` overwrite existing files
 
 `transform` and `ignore` can be added multiple times
 `relocate foo foo/bar -i test -i .git`
