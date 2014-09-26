@@ -118,7 +118,7 @@ function relocate(src, dst, options, done) {
 
 
   function remove(content, orig, dest, done) {
-    if(fs.existsSync(orig) && path.relative(orig, dst)[0] === '.') {
+    if(orig !== dest && fs.existsSync(orig) && path.relative(orig, dst)[0] === '.') {
       rmrf.sync(orig)
     }
 
