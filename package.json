@@ -1,6 +1,6 @@
 {
   "name": "relocate",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "relocate js files, update requires accordingly",
   "main": "index.js",
   "bin": {
