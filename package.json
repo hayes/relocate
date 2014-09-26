@@ -4,7 +4,7 @@
   "description": "relocate js files, update requires accordingly",
   "main": "index.js",
   "bin": {
-    "relocate": "cli.js"
+    "relocate": "bin/cli.js"
   },
   "dependencies": {
     "cssauron-falafel": "^1.2.1",
