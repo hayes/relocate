@@ -12,7 +12,7 @@ module.exports = relocate
 
 function relocate(src, dst, options, done) {
   var transforms = options.transforms || []
-  var ignores = (options.ignores && options.ignores.length) ? options.ignores || ['node_modules', '.git']
+  var ignores = (options.ignores && options.ignores.length) ? options.ignores : ['node_modules', '.git']
   var files = []
   var dirs = []
   var index = 0
@@ -31,7 +31,7 @@ function relocate(src, dst, options, done) {
 
     mkdirp(path.dirname(dst))
     files.push('')
-    remaining++
+    start()
   } else {
     mkdirp(dst)
     dirs.push(src)
