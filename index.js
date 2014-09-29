@@ -27,6 +27,8 @@ function relocate(src, dst, options, done) {
   if(!fs.statSync(src).isDirectory()) {
     if(dst[dst.length - 1 === '/']  || dst[dst.length - 1 === '/']) {
       dst = path.resolve(dst, path.basename(src))
+    } else if(fs.existsSync(dst) && fs.statSync(dst).isDirectory()) {
+      dst = path.resolve(dst, path.basename(src))
     }
 
     var srcDir = path.dirname(src)
