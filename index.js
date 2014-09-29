@@ -29,6 +29,7 @@ function relocate(src, dst, options, done) {
       dst = path.resolve(dst, path.basename(src))
     }
 
+    var srcDir = path.dirname(src)
     mkdirp(path.dirname(dst))
     files.push('')
     start()
@@ -93,14 +94,23 @@ function relocate(src, dst, options, done) {
 
     var result = falafel(content, function(node) {
       if(node.type === 'Program') {
-        node.update(node.source())
-      } else if(isRequire(node) && node.value.lastIndexOf('..', 0) === 0) {
-        var loc = path.resolve(path.dirname(orig), node.value)
-        var rel = path.relative(src, loc)
+        return node.update(node.source())
+      } else if(!isRequire(node) || node.value[0] !== '.') {
+        return
+      }
 
-        if(rel.lastIndexOf('..', 0) === 0) {
-          node.update('\'' + path.relative(path.dirname(dest), loc) + '\'')
-        }
+      var loc = path.resolve(path.dirname(orig), node.value)
+
+      if(srcDir) {
+        return node.update('\'' + path.relative(path.dirname(dest), loc) + '\'')
+      } else if(node.value.lastIndexOf('..', 0) !== 0) {
+        return
+      }
+
+      var rel = path.relative(srcDir || src, loc)
+
+      if(rel.lastIndexOf('..', 0) === 0) {
+        node.update('\'' + path.relative(path.dirname(dest), loc) + '\'')
       }
     })
 
