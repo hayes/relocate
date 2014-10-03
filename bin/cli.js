@@ -9,12 +9,12 @@ var transforms = [].concat(argv.t, argv.transform).filter(Boolean).map(load)
 var ignore = [].concat(argv.ignore, argv.i).filter(Boolean)
 
 require('../index.js')(src, dst, {
-    ignore: ignore
+    ignore: ignore.length ? ignore : null
   , transforms: transforms
   , remove: argv.r || argv.remove
   , force: argv.f || argv.force
 })
 
 function load(file) {
-  require(path.resolve(process.cwd(), file))
+  return require(path.resolve(process.cwd(), file))
 }

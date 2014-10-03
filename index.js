@@ -64,7 +64,9 @@ function relocate(src, dst, options, done) {
       return move(files[index++], finished)
     }
 
-    dirs.forEach(remove.bind(null, null))
+    if(options.remove) {
+      dirs.forEach(remove.bind(null, null))
+    }
     done && done()
   }
 
@@ -91,7 +93,7 @@ function relocate(src, dst, options, done) {
 
   function update_requires(content, orig, dest, done) {
     if(path.extname(orig) !== '.js') {
-      done(null, content)
+      return done(null, content)
     }
 
     var result = falafel(content, function(node) {
