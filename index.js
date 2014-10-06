@@ -106,7 +106,13 @@ function relocate(src, dst, options, done) {
       var loc = path.resolve(path.dirname(orig), node.value)
 
       if(srcDir) {
-        return node.update('\'' + path.relative(path.dirname(dest), loc) + '\'')
+        var updated = path.relative(path.dirname(dest), loc)
+
+        if(updated[0] !== '.') {
+          updated = './' + updated
+        }
+
+        return node.update('\'' + updated + '\'')
       } else if(node.value.lastIndexOf('..', 0) !== 0) {
         return
       }
